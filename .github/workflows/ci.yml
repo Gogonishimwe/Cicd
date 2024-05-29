@@ -21,6 +21,8 @@ jobs:
 
     - name: Install dependencies
       run: npm install
+    - name: Grant execute permissions to cucumber-js
+      run: chmod +x ./node_modules/.bin/cucumber-js
 
     - name: Run Selenium Cucumber tests
       run: npx cucumber-js
