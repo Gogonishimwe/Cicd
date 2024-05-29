@@ -1,0 +1,16 @@
+{
+  "name": "gurudemotest",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "cucumber-js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@cucumber/cucumber": "^10.7.0",
+    "selenium-webdriver": "^4.21.0"
+  }
+}
