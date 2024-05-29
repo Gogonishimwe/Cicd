@@ -1,1 +1,63 @@
-hello
+name: CI
+ 
+on:
+  push:
+    branches:
+      - main
+ 
+jobs:
+  test:
+    runs-on: ubuntu-latest
+ 
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+ 
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+ 
+      - name: Install dependencies
+        run: npm install
+ 
+      - name: Grant execute permissions to cucumber-js
+        run: chmod +x ./node_modules/.bin/cucumber-js
+ 
+      - name: Install Chrome browser
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable
+ 
+      - name: Install ChromeDriver
+        run: |
+          sudo apt-get install -yqq unzip
+          curl -sS -o /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/$(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE)/chromedriver_linux64.zip
+          sudo unzip /tmp/chromedriver.zip -d /usr/local/bin/
+          sudo chmod +x /usr/local/bin/chromedriver
+ 
+      - name: List project directory
+        run: ls -la
+ 
+      - name: List node_modules/.bin directory
+        run: ls -la node_modules/.bin
+ 
+      - name: Print environment variables
+        run: printenv
+ 
+      - name: Ensure npx is available
+        run: which npx
+ 
+      - name: Ensure cucumber-js is executable
+        run: |
+          if [ ! -x ./node_modules/.bin/cucumber-js ]; then
+            echo "cucumber-js is not executable"
+            exit 1
+          fi
+ 
+      - name: Run tests
+        shell: bash
+        env:
+          PATH: /usr/local/bin:$PATH
+        run: npx cucumber-js features/uploadFile.feature
+ 
