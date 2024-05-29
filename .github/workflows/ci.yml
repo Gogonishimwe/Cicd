@@ -23,6 +23,17 @@ jobs:
       run: npm install
     - name: Grant execute permissions to cucumber-js
       run: chmod +x ./node_modules/.bin/cucumber-js
+    - name: Install Chrome browser
+      run: |
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable
+ 
+    - name: Install ChromeDriver
+      run: |
+          sudo apt-get install -yqq unzip
+          curl -sS -o /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/$(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE)/chromedriver_linux64.zip
+          sudo unzip /tmp/chromedriver.zip -d /usr/local/bin/
+          sudo chmod +x /usr/local/bin/chromedriver
 
     - name: Run Selenium Cucumber tests
       run: npx cucumber-js
