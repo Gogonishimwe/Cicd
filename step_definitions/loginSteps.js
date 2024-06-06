@@ -1,6 +1,15 @@
 const { Builder, until,By } = require('selenium-webdriver');
 const { When, Then, setDefaultTimeout } = require('@cucumber/cucumber');
 const RegisterPage = require('../PageObjects/RegisterPage');
+const { Builder } = require('selenium-webdriver');
+const chrome = require('selenium-webdriver/chrome');
+
+// Set the path to the ChromeDriver binary
+const service = new chrome.ServiceBuilder('/usr/local/bin/chromedriver').build();
+chrome.setDefaultService(service);
+
+//let driver = new Builder().forBrowser('chrome').build();
+
 const assert = require('assert');
 
 // Set default timeout to 60 seconds
