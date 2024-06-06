@@ -21,7 +21,7 @@ async function closePopups() {
 }
 
 When('A user navigate to visit here link', async function () {
-    driver = new Builder().forBrowser('firefox').build();
+    driver = new Builder().forBrowser('chrome').build();
     registerPage = new RegisterPage(driver);
     await driver.get('https://demo.guru99.com/V1/index.php');
     await registerPage.navigateToVisitLink();

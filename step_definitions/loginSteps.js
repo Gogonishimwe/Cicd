@@ -9,7 +9,7 @@ let driver;
 let registerPage;
 
 When('A user enter user ID as {string}', async function (string) {
-  driver = new Builder().forBrowser('firefox').build();
+  driver = new Builder().forBrowser('chrome').build();
     registerPage = new RegisterPage(driver);
     await driver.get('https://demo.guru99.com/V1/index.php');
     registerPage.navigateLogin('mngr572981');
