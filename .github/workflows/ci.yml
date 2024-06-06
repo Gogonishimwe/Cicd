@@ -42,7 +42,8 @@ jobs:
       run: /usr/local/bin/chromedriver --version
 
     - name: Add ChromeDriver to PATH
-      run: echo "::add-path::/usr/local/bin"
+      run: echo "/usr/local/bin" >> $GITHUB_PATH
 
     - name: Run Selenium Cucumber tests
       run: npx cucumber-js
+
