@@ -5,7 +5,7 @@ const chrome = require('selenium-webdriver/chrome');
 
 // Set the path to the ChromeDriver binary
 const service = new chrome.ServiceBuilder('/usr/local/bin/chromedriver').build();
-chrome.setDefaultService(service);
+// chrome.setDefaultService(service);
 
 //let driver = new Builder().forBrowser('chrome').build();
 
