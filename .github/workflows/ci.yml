@@ -46,4 +46,3 @@ jobs:
 
     - name: Run Selenium Cucumber tests
       run: npx cucumber-js
-

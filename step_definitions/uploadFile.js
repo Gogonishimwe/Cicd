@@ -40,7 +40,7 @@ let registerPage;
           await registerPage.submitFile();
       });
       
-      Then('the user should receive  {string} message', async function (expectedMessage) { 
+      Then('the user should be redicted to Manager page', async function (expectedMessage) { 
         const successMessageElement = await driver.wait(until.elementLocated(By.xpath('//*[@id="res"]/center/text()[2]')), 10000);
         const actualMessage = await successMessageElement.getText();
         assert.strictEqual(actualMessage, expectedMessage);
