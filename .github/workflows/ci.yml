@@ -21,21 +21,30 @@ jobs:
 
     - name: Install dependencies
       run: npm install
+
     - name: Grant execute permissions to cucumber-js
       run: chmod +x ./node_modules/.bin/cucumber-js
+
     - name: Install Chrome browser
       run: |
-          sudo apt-get update
-          sudo apt-get install -y google-chrome-stable
- 
+        sudo apt-get update
+        sudo apt-get install -y google-chrome-stable
+
     - name: Install ChromeDriver
       run: |
-          sudo apt-get install -yqq unzip
-          curl -sS -o /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/$(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE)/chromedriver_linux64.zip
-          sudo unzip /tmp/chromedriver.zip -d /usr/local/bin/
-          sudo chmod +x /usr/local/bin/chromedriver
+        sudo apt-get install -yqq unzip
+        CHROMEDRIVER_VERSION=$(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE)
+        curl -sS -o /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip
+        sudo unzip -o /tmp/chromedriver.zip -d /usr/local/bin/
+        sudo chmod +x /usr/local/bin/chromedriver
+
+    - name: Verify ChromeDriver installation
+      run: /usr/local/bin/chromedriver --version
 
     - name: Run Selenium Cucumber tests
       run: npx cucumber-js
+
+
+  
 
  
