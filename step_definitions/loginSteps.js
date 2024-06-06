@@ -1,7 +1,6 @@
 const { Builder, until,By } = require('selenium-webdriver');
 const { When, Then, setDefaultTimeout } = require('@cucumber/cucumber');
 const RegisterPage = require('../PageObjects/RegisterPage');
-const { Builder } = require('selenium-webdriver');
 const chrome = require('selenium-webdriver/chrome');
 
 // Set the path to the ChromeDriver binary
