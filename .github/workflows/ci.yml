@@ -41,10 +41,8 @@ jobs:
     - name: Verify ChromeDriver installation
       run: /usr/local/bin/chromedriver --version
 
+    - name: Add ChromeDriver to PATH
+      run: echo "::add-path::/usr/local/bin"
+
     - name: Run Selenium Cucumber tests
       run: npx cucumber-js
-
-
-  
-
- 
